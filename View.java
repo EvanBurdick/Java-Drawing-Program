@@ -2,13 +2,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.border.EmptyBorder;
 class View extends JFrame {
   private UIContext uiContext;
   private JPanel drawingPanel;
   private JPanel buttonPanel;
+  private JPanel buttonPanel2;
   private JPanel filePanel;
   private JButton lineButton;
   private JButton triangleButton;
+  private JButton rectangleButton;
   private JButton deleteButton;
   private JButton labelButton;
   private JButton selectButton;
@@ -89,12 +92,27 @@ class View extends JFrame {
     });
     model.setUI(NewSwingUI.getInstance());
     drawingPanel = new DrawingPanel();
-    buttonPanel = new JPanel();
+    drawingPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+
+    JPanel panel = new JPanel(new BorderLayout());
+    panel.setBorder(new EmptyBorder(2, 3, 2, 3));
+    JPanel layout = new JPanel(new GridBagLayout());
+    layout.setBorder(new EmptyBorder(5, 5, 5, 5));
+    JPanel buttonPanel = new JPanel(new GridLayout(10, 1, 10, 5));
+    buttonPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+    layout.add(buttonPanel);
+    panel.add(layout, BorderLayout.WEST);
+
+    buttonPanel2 = new JPanel(new GridLayout(1,0, 10,10));
+    buttonPanel2.setBorder(BorderFactory.createLineBorder(Color.black));
     Container contentpane = getContentPane();
-    contentpane.add(buttonPanel, "North");
+
+    contentpane.add(buttonPanel, "West");
+    contentpane.add(buttonPanel2, "South");
     contentpane.add(drawingPanel);
     lineButton= new LineButton(undoManager, this, drawingPanel);
     triangleButton = new TriangleButton(undoManager, this, drawingPanel);
+    rectangleButton = new RectangleButton(undoManager, this, drawingPanel);
     labelButton = new LabelButton(undoManager, this, drawingPanel);
     selectButton= new SelectButton(undoManager, this, drawingPanel);
     clockwiseButton= new ClockwiseButton(undoManager, this, drawingPanel);
@@ -106,15 +124,16 @@ class View extends JFrame {
     redoButton = new RedoButton(undoManager);
     buttonPanel.add(lineButton);
     buttonPanel.add(triangleButton);
+    buttonPanel.add(rectangleButton);
     buttonPanel.add(labelButton);
-    buttonPanel.add(selectButton);
-    buttonPanel.add(clockwiseButton);
-    buttonPanel.add(cclockwiseButton);
-    buttonPanel.add(deleteButton);
-    buttonPanel.add(saveButton);
-    buttonPanel.add(openButton);
-    buttonPanel.add(undoButton);
-    buttonPanel.add(redoButton);
+    buttonPanel2.add(selectButton);
+    buttonPanel2.add(clockwiseButton);
+    buttonPanel2.add(cclockwiseButton);
+    buttonPanel2.add(deleteButton);
+    buttonPanel2.add(undoButton);
+    buttonPanel2.add(redoButton);
+    buttonPanel2.add(saveButton);
+    buttonPanel2.add(openButton);
     this.setSize(1000, 600);
   }
   public void refresh() {
