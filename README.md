@@ -8,3 +8,6 @@ This program is a simple GUI which lets you draw objects using the provided shap
 compile: ```javac DrawingProgram.java```
 
 run: ```java DrawingProgram```
+
+## Example
+![](https://github.com/EvanBurdick/Java-Drawing-Program/blob/main/DemoDrawing.jpg)
