@@ -20,6 +20,11 @@ public class CounterClockwiseCommand extends Command {
             Triangle triangle = (Triangle) item;
             triangle.rotate90counterclockwise();
           }
+          else if(item instanceof Rectangle){
+            //is a rectangle
+            Rectangle rectangle = (Rectangle) item;
+            rectangle.rotate90counterclockwise();
+          }
         //model.markSelected(item);
 		found = true;
         break;

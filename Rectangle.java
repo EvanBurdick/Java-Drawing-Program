@@ -78,7 +78,7 @@ public class Rectangle extends Item {
     point1.move(midpointx + (point1y - midpointy), midpointy + (midpointx - point1x));
     point2.move(midpointx + (point2y - midpointy), midpointy + (midpointx - point2x));
     point3.move(midpointx + (point3y - midpointy), midpointy + (midpointx - point3x));
-    point3.move(midpointx + (point4y - midpointy), midpointy + (midpointx - point4x));
+    point4.move(midpointx + (point4y - midpointy), midpointy + (midpointx - point4x));
   }
   public void setPoint1(Point point) {
     point1 = point;

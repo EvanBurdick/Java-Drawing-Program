@@ -31,12 +31,12 @@ public class TriangleButton  extends JButton implements ActionListener {
     } 
     else if (pointCount == 2){
         triangleCommand.setLinePoint(View.mapPoint(event.getPoint()));
-        undoManager.beginCommand(triangleCommand);
+        //undoManager.beginCommand(triangleCommand);
     }
     else if (pointCount == 3) {
         pointCount = 0;
         triangleCommand.setLinePoint(View.mapPoint(event.getPoint()));
-        triangleCommand.finalize();
+        //triangleCommand.finalize();
         drawingPanel.removeMouseListener(this);
         view.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         undoManager.endCommand(triangleCommand);
